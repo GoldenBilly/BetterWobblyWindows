@@ -6,7 +6,7 @@ This is still very much experimental, so expect stutters, freezing, etc. Though,
 
 It also keeps the blur attached to the deformed window. When Custom Better Blur DX is available, the effect can use its renderer through API V1. Otherwise, it uses the built-in blur fallback.
 
-See [Custom Better Blur DX implementation for this plugin](MUST-FIX-LINK)
+See [Custom Better Blur DX implementation for this plugin](https://github.com/GoldenBilly/kwin-effects-better-blur-dx-wobbly)
 
 Recommended way of using this effect is to install custom implementation of BBDX.
 
