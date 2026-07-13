@@ -12,6 +12,10 @@ Recommended way of using this effect is to install custom implementation of BBDX
 
 Otherwise expect freezes/flushes/visual artifacts of fallback mode.
 
+## Example
+
+https://github.com/user-attachments/assets/ef6cc458-7c05-496c-ac57-154e0d18e78e
+
 ## Minimal Requirements
 
 - KDE Plasma 6 and KWin
