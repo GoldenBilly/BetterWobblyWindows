@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 va111222666 / goldenbilly / Va126 -->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Configuration schema adapted from KWin Wobbly Windows (https://github.com/KDE/kwin/tree/master/src/plugins/wobblywindows) and extended for Better Blur DX integration. -->
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile arg="true" />
+    <group name="Effect-better_wobblywindows">
+        <entry name="WobblynessLevel" type="UInt">
+            <default>0</default>
+        </entry>
+        <entry name="Settings" type="String">
+            <default>Auto</default>
+        </entry>
+        <entry name="MoveWobble" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="ResizeWobble" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="VisualOppositePointFollowOnResize" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="VisualOppositePointFollowStrengthPercent" type="UInt">
+            <default>8</default>
+        </entry>
+        <entry name="AdvancedMode" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="EmbeddedDXBlur" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="EmbeddedDXBlurUseBetterBlurDXSettings" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="EmbeddedDXBlurStrength" type="UInt">
+            <default>15</default>
+        </entry>
+        <entry name="EmbeddedDXBlurSaturation" type="UInt">
+            <default>150</default>
+        </entry>
+        <entry name="EmbeddedDXBlurContrast" type="UInt">
+            <default>100</default>
+        </entry>
+        <entry name="EmbeddedDXBlurBrightness" type="UInt">
+            <default>100</default>
+        </entry>
+        <entry name="EmbeddedDXBlurNoiseStrength" type="UInt">
+            <default>5</default>
+        </entry>
+        <entry name="EmbeddedDXBlurCornerRadius" type="UInt">
+            <default>0</default>
+        </entry>
+        <entry name="EmbeddedDXBlurColorMode" type="UInt">
+            <default>0</default>
+        </entry>
+        <entry name="EmbeddedDXBlurNoiseMode" type="UInt">
+            <default>0</default>
+        </entry>
+        <entry name="EmbeddedDXBlurHandoffFrames" type="UInt">
+            <default>8</default>
+        </entry>
+        <entry name="EmbeddedDXBlurEdgeSoftnessPixels" type="UInt">
+            <default>0</default>
+        </entry>
+        <entry name="EmbeddedDXBlurClearIntermediateTargets" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="EmbeddedDXBlurSuppressExternal" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="EmbeddedDXBlurFallbackFrames" type="UInt">
+            <default>8</default>
+        </entry>
+        <entry name="EmbeddedDXBlurSourceYFlip" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="EmbeddedDXBlurSourceMappingVersion" type="UInt">
+            <default>41</default>
+        </entry>
+        <entry name="MaxPhysicsStepsPerFrame" type="UInt">
+            <default>6</default>
+        </entry>
+        <entry name="Stiffness" type="Int">
+            <default>15</default>
+        </entry>
+        <entry name="Drag" type="Int">
+            <default>80</default>
+        </entry>
+        <entry name="MoveFactor" type="Int">
+            <default>10</default>
+        </entry>
+        <entry name="XTessellation" type="Double">
+            <default>20.0</default>
+        </entry>
+        <entry name="YTessellation" type="Double">
+            <default>20.0</default>
+        </entry>
+        <entry name="MinVelocity" type="Double">
+            <default>0.0</default>
+        </entry>
+        <entry name="MaxVelocity" type="Double">
+            <default>1000.0</default>
+        </entry>
+        <entry name="StopVelocity" type="Double">
+            <default>0.5</default>
+        </entry>
+        <entry name="MinAcceleration" type="Double">
+            <default>0.0</default>
+        </entry>
+        <entry name="MaxAcceleration" type="Double">
+            <default>1000.0</default>
+        </entry>
+        <entry name="StopAcceleration" type="Double">
+            <default>5.0</default>
+        </entry>
+    </group>
+</kcfg>

@@ -1,0 +1,16 @@
+# Generated build and IDE files
+/build/
+/cmake-build-*/
+/.idea/
+/.vscode/
+/.cache/
+
+# Compiler/tool outputs
+*.o
+*.so
+*.a
+*.gcda
+*.gcno
+compile_commands.json
+CTestTestfile.cmake
+Testing/

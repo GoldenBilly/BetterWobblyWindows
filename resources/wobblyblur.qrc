@@ -1,0 +1,19 @@
+<!-- SPDX-FileCopyrightText: 2026 va111222666 / goldenbilly / Va126 -->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Embedded blur resources adapted from Better Blur DX: https://github.com/xarblu/kwin-effects-better-blur-dx -->
+<RCC>
+    <qresource prefix="/effects/wobblywindows">
+        <file alias="shaders/vertex.vert">shaders/vertex.vert</file>
+        <file alias="shaders/downsample.frag">shaders/downsample.frag</file>
+        <file alias="shaders/upsample.frag">shaders/upsample.frag</file>
+        <file alias="shaders/onscreen.frag">shaders/onscreen.frag</file>
+        <file alias="shaders/composite.frag">shaders/composite.frag</file>
+        <file alias="shaders/noise.frag">shaders/noise.frag</file>
+        <file alias="shaders/vertex_core.vert">shaders/vertex_core.vert</file>
+        <file alias="shaders/downsample_core.frag">shaders/downsample_core.frag</file>
+        <file alias="shaders/upsample_core.frag">shaders/upsample_core.frag</file>
+        <file alias="shaders/onscreen_core.frag">shaders/onscreen_core.frag</file>
+        <file alias="shaders/composite_core.frag">shaders/composite_core.frag</file>
+        <file alias="shaders/noise_core.frag">shaders/noise_core.frag</file>
+    </qresource>
+</RCC>

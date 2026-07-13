@@ -1,0 +1,44 @@
+{
+    "KPlugin": {
+        "Id": "better_wobblywindows",
+        "Name": "Better Wobbly Windows",
+        "Description": "Deform moving windows; use Better Blur DX provider rendering with an embedded fallback",
+        "Category": "Appearance",
+        "EnabledByDefault": false,
+        "License": "GPL-3.0-or-later",
+        "Authors": [
+            {
+                "Name": "va111222666 / goldenbilly / Va126"
+            },
+            {
+                "Name": "Cédric Borgese (KWin Wobbly Windows)"
+            },
+            {
+                "Name": "Lucas Murray (KWin Wobbly Windows configuration)"
+            },
+            {
+                "Name": "Vlad Zahorodnii (KWin Wobbly Windows plugin factory)"
+            },
+            {
+                "Name": "KDE KWin development team"
+            },
+            {
+                "Name": "taj_ny (Force Blur / Better Blur)"
+            },
+            {
+                "Name": "DaddelZeit (Force Blur / Better Blur)"
+            },
+            {
+                "Name": "iGerman00 (Force Blur / Better Blur)"
+            },
+            {
+                "Name": "Xarblu (Better Blur DX)"
+            },
+            {
+                "Name": "Better Blur DX contributors"
+            }
+        ],
+        "Copyright": "© 2026 va111222666 / goldenbilly / Va126; portions © KDE KWin, Force Blur / Better Blur, and Better Blur DX contributors"
+    },
+    "X-KDE-ConfigModule": "better_wobblywindows_config"
+}
