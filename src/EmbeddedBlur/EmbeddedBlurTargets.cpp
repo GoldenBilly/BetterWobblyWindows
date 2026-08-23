@@ -335,7 +335,7 @@ bool WobblyWindowsEffect::EnsureEmbeddedBlurRenderTargets(
 
 void WobblyWindowsEffect::PrewarmEmbeddedBlurRenderTargets(EffectWindow *w)
 {
-    if (!w || !_embeddedBlurEnabled || !_embeddedBlurValid) {
+    if (!w || !_embeddedBlurEnabled || !_embeddedBlurFallbackEnabled || !_embeddedBlurValid) {
         return;
     }
 

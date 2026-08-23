@@ -60,6 +60,7 @@ class WobblyWindowsEffectConfig : public KCModule
     QSlider *_visualOppositePointFollowStrength = nullptr;
     QCheckBox *_advancedMode = nullptr;
     QCheckBox *_embeddedDXBlur = nullptr;
+    QCheckBox *_apiOnlyBlur = nullptr;
     QCheckBox *_useDxBlurSettings = nullptr;
     QPushButton *_pullDxSettings = nullptr;
     QSpinBox *_stiffness = nullptr;

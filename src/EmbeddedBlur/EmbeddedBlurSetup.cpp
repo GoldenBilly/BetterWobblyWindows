@@ -205,6 +205,7 @@ void WobblyWindowsEffect::ReconfigureEmbeddedBlur()
     const KConfigGroup betterWobblyGroup(effects->config(), BetterWobblyWindows::BetterWobblyConfigGroupName);
 
     _embeddedBlurEnabled = betterWobblyGroup.readEntry("EmbeddedDXBlur", true);
+    _embeddedBlurFallbackEnabled = !betterWobblyGroup.readEntry("EmbeddedDXBlurApiOnly", false);
     _embeddedBlurUseBetterBlurDXSettings = BetterWobblyWindows::UseBetterBlurDxSettings(effects->config());
     const BetterWobblyWindows::DxBlurVisualSettings blurSettings =
         BetterWobblyWindows::ReadEmbeddedBlurEffectiveSettings(effects->config());
@@ -289,7 +290,7 @@ void WobblyWindowsEffect::ReconfigureEmbeddedBlur()
     _embeddedRefractionMode = blurSettings.refractionMode;
 
     _embeddedBlurRenderData.clear();
-    const bool mustReleasePool = !_embeddedBlurEnabled || !_embeddedBlurValid ||
+    const bool mustReleasePool = !_embeddedBlurEnabled || !_embeddedBlurFallbackEnabled || !_embeddedBlurValid ||
         _embeddedBlurIterationCount < previousIterationCount || _embeddedBlurExpandSize < previousExpandSize;
     if (mustReleasePool) {
         ReleaseEmbeddedBlurRenderTargets(_embeddedBlurReusableRenderData);

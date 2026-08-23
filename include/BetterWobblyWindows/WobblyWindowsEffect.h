@@ -341,6 +341,7 @@ class WobblyWindowsEffect : public OffscreenEffect
     int _maxPhysicsStepsPerFrame = BetterWobblyWindows::DefaultPhysicsStepsPerFrame;
     bool _embeddedBlurValid = false;
     bool _embeddedBlurEnabled = true;
+    bool _embeddedBlurFallbackEnabled = true;
 
     bool _embeddedBlurUseBetterBlurDXSettings = true;
     KConfigWatcher::Ptr _configWatcher;

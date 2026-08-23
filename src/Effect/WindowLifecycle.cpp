@@ -57,7 +57,7 @@ void WobblyWindowsEffect::drawWindow(const RenderTarget &renderTarget,
         if (!_embeddedBlurReusableRenderData.textures.empty() || _embeddedBlurReusableRenderData.compositeTexture) {
             ReleaseEmbeddedBlurRenderTargets(_embeddedBlurReusableRenderData);
         }
-    } else {
+    } else if (_embeddedBlurFallbackEnabled) {
         // None/Declined mean unavailable or technical failure; only these states
         // are allowed to activate the strict standalone fallback.
         DrawEmbeddedBlur(renderTarget, viewport, w, mask, deviceRegion, data);
@@ -409,11 +409,10 @@ void WobblyWindowsEffect::SlotWindowStepUserMovedResized(EffectWindow *w, const 
         if (rect.bottom() != wwi.resizeOriginalRect.bottom()) {
             wwi.canWobbleBottom = true;
         }
-        // Keep the redirected window on the device-pixel grid. Fractional
-        // device coordinates force linear filtering of the offscreen texture
-        // and make the moving window visibly softer, especially at fractional
-        // scale factors and across mixed-DPI outputs.
-        setVertexSnappingMode(RenderGeometry::VertexSnappingMode::Round);
+        // Match KWin's Wobbly Windows path while the mesh is moving. Rounding
+        // here makes a fractionally positioned window jump when redirection
+        // starts, before the spring has produced any visible deformation.
+        setVertexSnappingMode(RenderGeometry::VertexSnappingMode::None);
     }
 }
 
@@ -495,7 +494,9 @@ void WobblyWindowsEffect::StartMovedResized(EffectWindow *w)
                                       << w->isUserResize() << "frame" << w->frameGeometry();
     }
 
-    setVertexSnappingMode(RenderGeometry::VertexSnappingMode::Round);
+    // Do not snap the redirected mesh on the first drag frame. Fractional
+    // positions must be preserved or the whole window visibly shifts once.
+    setVertexSnappingMode(RenderGeometry::VertexSnappingMode::None);
 
     if (_embeddedBlurReusableRenderData.lastSourceWindow != w) {
         _embeddedBlurReusableRenderData.hasValidSource = false;
@@ -511,7 +512,7 @@ void WobblyWindowsEffect::StartMovedResized(EffectWindow *w)
     // blur pipelines resident for the same moving window.
     const bool providerEffectLoaded =
         effects && effects->loadedEffects().contains(QStringLiteral("better_blur_dx_wobbly_api"));
-    if (!providerEffectLoaded) {
+    if (_embeddedBlurFallbackEnabled && !providerEffectLoaded) {
         PrewarmEmbeddedBlurRenderTargets(w);
     }
 
@@ -587,7 +588,7 @@ void WobblyWindowsEffect::StepMovedResized(EffectWindow *w)
         redirect(w);
         const bool providerEffectLoaded =
             effects && effects->loadedEffects().contains(QStringLiteral("better_blur_dx_wobbly_api"));
-        if (!providerEffectLoaded) {
+        if (_embeddedBlurFallbackEnabled && !providerEffectLoaded) {
             PrewarmEmbeddedBlurRenderTargets(w);
         }
     }

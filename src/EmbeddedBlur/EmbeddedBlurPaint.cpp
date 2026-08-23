@@ -133,7 +133,7 @@ void WobblyWindowsEffect::DrawEmbeddedBlur(const RenderTarget &renderTarget,
                                       << (renderTarget.texture() != nullptr) << "scale" << viewport.scale();
     }
 
-    if (!_embeddedBlurEnabled || !shouldPaint) {
+    if (!_embeddedBlurEnabled || !_embeddedBlurFallbackEnabled || !shouldPaint) {
         return;
     }
 

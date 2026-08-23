@@ -23,6 +23,7 @@ The configuration schema is stored in `wobblywindows.kcfg`. Most users only need
 ## Blur settings
 
 - **Embedded DX blur** enables the built-in fallback renderer.
+- **Better Wobbly API only** keeps the Better Blur DX API hand-off enabled but disables the embedded fallback renderer.
 - **Use Better Blur DX settings** reuses compatible blur appearance values when available.
 - **Strength** controls blur intensity.
 - **Saturation, contrast, and brightness** control the final color transform.

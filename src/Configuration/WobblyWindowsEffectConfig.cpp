@@ -222,6 +222,12 @@ WobblyWindowsEffectConfig::WobblyWindowsEffectConfig(QObject *parent, const KPlu
     auto blurAdvancedLayout = new QVBoxLayout(blurAdvanced);
     auto blurAdvancedForm = new QFormLayout();
 
+    _apiOnlyBlur =
+        new QCheckBox(QStringLiteral("Better Wobbly API only (disable embedded blur fallback)"), blurAdvanced);
+    _apiOnlyBlur->setToolTip(QStringLiteral(
+        "Keep the Better Blur DX API hand-off enabled, but never run Better Wobbly Windows' embedded blur renderer."));
+    blurAdvancedLayout->addWidget(_apiOnlyBlur);
+
     _colorMode = new QComboBox(blurAdvanced);
     _colorMode->addItem(QStringLiteral("DX exact color"), 0);
     _colorMode->addItem(QStringLiteral("Anti-flash clamp above 100%"), 1);
@@ -290,6 +296,7 @@ WobblyWindowsEffectConfig::WobblyWindowsEffectConfig(QObject *parent, const KPlu
     connect(_noiseMode, qOverload<int>(&QComboBox::currentIndexChanged), this, changed);
     connect(_handoffFrames, qOverload<int>(&QSpinBox::valueChanged), this, changed);
     connect(_edgeSoftness, qOverload<int>(&QSpinBox::valueChanged), this, changed);
+    connect(_apiOnlyBlur, &QCheckBox::toggled, this, changed);
     connect(_clearIntermediates, &QCheckBox::toggled, this, changed);
     connect(_fallbackFrames, qOverload<int>(&QSpinBox::valueChanged), this, changed);
     connect(_sourceYFlip, &QCheckBox::toggled, this, changed);
@@ -392,6 +399,7 @@ void WobblyWindowsEffectConfig::load()
         _resizeWobble->isChecked() && _visualOppositePointFollowOnResize->isChecked());
     _advancedMode->setChecked(group.readEntry("AdvancedMode", false));
     _embeddedDXBlur->setChecked(group.readEntry("EmbeddedDXBlur", true));
+    _apiOnlyBlur->setChecked(group.readEntry("EmbeddedDXBlurApiOnly", false));
     _useDxBlurSettings->setChecked(BetterWobblyWindows::UseBetterBlurDxSettings(config));
     SetComboValue(_colorMode, group.readEntry("EmbeddedDXBlurColorMode", 0));
     SetComboValue(_noiseMode, group.readEntry("EmbeddedDXBlurNoiseMode", 0));
@@ -438,6 +446,7 @@ void WobblyWindowsEffectConfig::save()
     WriteNotifyingEntry(group, "Drag", _drag->value());
     WriteNotifyingEntry(group, "MoveFactor", _moveFactor->value());
     WriteNotifyingEntry(group, "EmbeddedDXBlur", _embeddedDXBlur->isChecked());
+    WriteNotifyingEntry(group, "EmbeddedDXBlurApiOnly", _apiOnlyBlur->isChecked());
     WriteNotifyingEntry(group, "EmbeddedDXBlurUseBetterBlurDXSettings", _useDxBlurSettings->isChecked());
     WriteNotifyingEntry(group, "EmbeddedDXBlurStrength", _blurStrength->value());
     WriteNotifyingEntry(group, "EmbeddedDXBlurSaturation", _saturation->value());
@@ -493,6 +502,7 @@ void WobblyWindowsEffectConfig::defaults()
     _visualOppositePointFollowStrength->setEnabled(false);
     _advancedMode->setChecked(false);
     _embeddedDXBlur->setChecked(true);
+    _apiOnlyBlur->setChecked(false);
     _useDxBlurSettings->setChecked(true);
     SetComboValue(_colorMode, 0);
     SetComboValue(_noiseMode, 0);

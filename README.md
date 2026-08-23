@@ -18,7 +18,7 @@ https://github.com/user-attachments/assets/ef6cc458-7c05-496c-ac57-154e0d18e78e
 
 ## Minimal Requirements
 
-- KDE Plasma 6 and KWin
+- KDE Plasma / KWin 6.7.4
 - CMake 3.16 or newer
 - A C++20 compiler
 - Qt 6 development files
@@ -28,7 +28,7 @@ https://github.com/user-attachments/assets/ef6cc458-7c05-496c-ac57-154e0d18e78e
 
 ## Tested on
 
-- PlasmaShell / KWin 6.7.2 (Wayland)
+- PlasmaShell / KWin 6.7.4 (Wayland)
 - NVIDIA GeForce RTX 3050 (driver version 610.43.02) / Ryzen 5600G / 64 Gb RAM
 - Arch Linux
 - GCC 16.1.1 20260625
