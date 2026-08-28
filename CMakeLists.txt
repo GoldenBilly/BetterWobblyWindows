@@ -36,9 +36,7 @@ set(BETTER_WOBBLYWINDOWS_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 if(BETTER_WOBBLY_BUILD_PLUGIN)
     find_package(Qt6 REQUIRED COMPONENTS Widgets DBus)
     find_package(KF6 REQUIRED COMPONENTS Config CoreAddons KCMUtils)
-    # KWin effects use KWin's private C++ ABI. Build this migrated branch only
-    # against the exact Plasma/KWin release it targets.
-    find_package(KWin 6.7.4 EXACT REQUIRED COMPONENTS kwineffects)
+    find_package(KWin REQUIRED COMPONENTS kwineffects)
 
     set(BETTER_WOBBLYWINDOWS_COMMON_SOURCES
         src/Configuration/DefaultWobblyParameters.cpp
