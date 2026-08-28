@@ -164,7 +164,7 @@ WobblyWindowsEffectConfig::WobblyWindowsEffectConfig(QObject *parent, const KPlu
 
     auto blurSource = new QGroupBox(QStringLiteral("Blur source"), blurPage);
     auto blurSourceLayout = new QVBoxLayout(blurSource);
-    _embeddedDXBlur = new QCheckBox(QStringLiteral("Draw embedded blur while wobbling"), blurSource);
+    _embeddedDXBlur = new QCheckBox(QStringLiteral("Draw blur while wobbling"), blurSource);
     blurSourceLayout->addWidget(_embeddedDXBlur);
 
     _useDxBlurSettings = new QCheckBox(QStringLiteral("Use values from Better Blur DX settings"), blurSource);
@@ -223,9 +223,9 @@ WobblyWindowsEffectConfig::WobblyWindowsEffectConfig(QObject *parent, const KPlu
     auto blurAdvancedForm = new QFormLayout();
 
     _apiOnlyBlur =
-        new QCheckBox(QStringLiteral("Better Wobbly API only (disable embedded blur fallback)"), blurAdvanced);
+        new QCheckBox(QStringLiteral("Disable embedded blur fallback if Wobbly API is not supported"), blurAdvanced);
     _apiOnlyBlur->setToolTip(QStringLiteral(
-        "Keep the Better Blur DX API hand-off enabled, but never run Better Wobbly Windows' embedded blur renderer."));
+        "Keep the Better Blur DX API hand-off enabled, but never run Better Wobbly Windows' embedded blur renderer. Blur WILL NOT work if blur plugin doesn't support Wobbly API."));
     blurAdvancedLayout->addWidget(_apiOnlyBlur);
 
     _colorMode = new QComboBox(blurAdvanced);
