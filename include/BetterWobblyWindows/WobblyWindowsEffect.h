@@ -27,6 +27,7 @@
 #include "BetterWobblyWindows/WobblyParameterSet.h"
 #include "BetterWobblyWindows/WobblyWindowsConstants.h"
 #include "BetterWobblyWindows/DxBlurSettings.h"
+#include "BetterWobblyWindows/KWinVersion.h"
 
 #include "effect/offscreeneffect.h"
 #include "effect/timeline.h"
@@ -82,12 +83,21 @@ class WobblyWindowsEffect : public OffscreenEffect
 
     void reconfigure(ReconfigureFlags) override;
     void prePaintWindow(RenderView *view, EffectWindow *w, WindowPrePaintData &data) override;
+#if KWIN_VERSION < KWIN_VERSION_CODE(6, 7, 80)
     void drawWindow(const RenderTarget &renderTarget,
         const RenderViewport &viewport,
         EffectWindow *w,
         int mask,
         const Region &deviceRegion,
         WindowPaintData &data) override;
+#else
+    bool drawWindow(const RenderTarget &renderTarget,
+        const RenderViewport &viewport,
+        EffectWindow *w,
+        int mask,
+        const Region &deviceRegion,
+        WindowPaintData &data) override;
+#endif
     void postPaintScreen() override;
     bool isActive() const override;
 
