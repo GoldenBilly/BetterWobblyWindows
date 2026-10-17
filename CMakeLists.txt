@@ -72,6 +72,12 @@ if(BETTER_WOBBLY_BUILD_PLUGIN)
         AUTOMOC_MACRO_NAMES KWIN_EFFECT_FACTORY_SUPPORTED
     )
 
+    target_compile_definitions(better_wobblywindows PRIVATE
+        KWIN_VERSION_MAJOR=${KWin_VERSION_MAJOR}
+        KWIN_VERSION_MINOR=${KWin_VERSION_MINOR}
+        KWIN_VERSION_PATCH=${KWin_VERSION_PATCH}
+    )
+
     # Better Blur DX switches to the GLSL core shader set on
     # Plasma/KWin 6.7 because KWin changed shader loading there. Keep the same
     # boundary while retaining compatibility shaders for Plasma 6.5/6.6.

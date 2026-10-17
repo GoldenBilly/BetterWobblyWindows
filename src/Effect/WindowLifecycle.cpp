@@ -22,12 +22,21 @@ namespace
 const std::chrono::milliseconds IntegrationStep(BetterWobblyWindows::IntegrationStepMilliseconds);
 } // namespace
 
+#if KWIN_VERSION < KWIN_VERSION_CODE(6, 7, 80)
 void WobblyWindowsEffect::drawWindow(const RenderTarget &renderTarget,
     const RenderViewport &viewport,
     EffectWindow *w,
     int mask,
     const Region &deviceRegion,
     WindowPaintData &data)
+#else
+bool WobblyWindowsEffect::drawWindow(const RenderTarget &renderTarget,
+    const RenderViewport &viewport,
+    EffectWindow *w,
+    int mask,
+    const Region &deviceRegion,
+    WindowPaintData &data)
+#endif
 {
     if (BetterWobblyWindows::IsBlurTraceEnabled() && _windows.contains(w)) {
         BetterWobblyWindows::WriteBlurTraceLine(
@@ -62,7 +71,11 @@ void WobblyWindowsEffect::drawWindow(const RenderTarget &renderTarget,
         // are allowed to activate the strict standalone fallback.
         DrawEmbeddedBlur(renderTarget, viewport, w, mask, deviceRegion, data);
     }
+#if KWIN_VERSION < KWIN_VERSION_CODE(6, 7, 80)
     OffscreenEffect::drawWindow(renderTarget, viewport, w, mask, deviceRegion, data);
+#else
+    return OffscreenEffect::drawWindow(renderTarget, viewport, w, mask, deviceRegion, data);
+#endif
 }
 
 void WobblyWindowsEffect::SetExternalBlurSuppressed(EffectWindow *w, bool suppressed)
